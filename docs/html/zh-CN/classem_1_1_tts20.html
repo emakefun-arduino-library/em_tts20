@@ -1,0 +1,435 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>EM TTS20 Arduino 库: em::Tts20类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">EM TTS20 Arduino 库<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.13.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('classem_1_1_tts20.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-attribs">静态 Public 属性</a> &#124;
+<a href="classem_1_1_tts20-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">em::Tts20类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Tts20是用于TTS20模块的驱动类，用于语音合成。  
+ <a href="#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="tts20_8h_source.html">tts20.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aea3ee289727d68dc8998b206f07b361d" id="r_aea3ee289727d68dc8998b206f07b361d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea3ee289727d68dc8998b206f07b361d">Tts20</a> (const uint8_t i2c_address, TwoWire &amp;wire)</td></tr>
+<tr class="memdesc:aea3ee289727d68dc8998b206f07b361d"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数。  <br /></td></tr>
+<tr class="separator:aea3ee289727d68dc8998b206f07b361d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefd2a1d14ee47a141349da07e869a9a8" id="r_aefd2a1d14ee47a141349da07e869a9a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefd2a1d14ee47a141349da07e869a9a8">Init</a> ()</td></tr>
+<tr class="memdesc:aefd2a1d14ee47a141349da07e869a9a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化。  <br /></td></tr>
+<tr class="separator:aefd2a1d14ee47a141349da07e869a9a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b8cd98741afb198a602cf7b50915b30" id="r_a9b8cd98741afb198a602cf7b50915b30"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b8cd98741afb198a602cf7b50915b30">firmware_version</a> ()</td></tr>
+<tr class="memdesc:a9b8cd98741afb198a602cf7b50915b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取固件版本。  <br /></td></tr>
+<tr class="separator:a9b8cd98741afb198a602cf7b50915b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a4d90cbfa1e883e9325de0577bd73b8" id="r_a8a4d90cbfa1e883e9325de0577bd73b8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a4d90cbfa1e883e9325de0577bd73b8">device_id</a> ()</td></tr>
+<tr class="memdesc:a8a4d90cbfa1e883e9325de0577bd73b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取设备ID。  <br /></td></tr>
+<tr class="separator:a8a4d90cbfa1e883e9325de0577bd73b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aded8060e44e8128f73466bc8479300a7" id="r_aded8060e44e8128f73466bc8479300a7"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aded8060e44e8128f73466bc8479300a7">name</a> ()</td></tr>
+<tr class="memdesc:aded8060e44e8128f73466bc8479300a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取设备名称。  <br /></td></tr>
+<tr class="separator:aded8060e44e8128f73466bc8479300a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67060bb832abb5b04e51832ed26ebab8" id="r_a67060bb832abb5b04e51832ed26ebab8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67060bb832abb5b04e51832ed26ebab8">Play</a> (const String &amp;text)</td></tr>
+<tr class="memdesc:a67060bb832abb5b04e51832ed26ebab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">文本转语音并播放。  <br /></td></tr>
+<tr class="separator:a67060bb832abb5b04e51832ed26ebab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fd60bb77007284d8b666c3f25ade2f2" id="r_a1fd60bb77007284d8b666c3f25ade2f2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fd60bb77007284d8b666c3f25ade2f2">IsBusy</a> ()</td></tr>
+<tr class="memdesc:a1fd60bb77007284d8b666c3f25ade2f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查模块是否处于忙碌状态。  <br /></td></tr>
+<tr class="separator:a1fd60bb77007284d8b666c3f25ade2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3abda06650ea9373bfbb79afd163b33" id="r_ac3abda06650ea9373bfbb79afd163b33"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3abda06650ea9373bfbb79afd163b33">Stop</a> ()</td></tr>
+<tr class="memdesc:ac3abda06650ea9373bfbb79afd163b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">终止播放。  <br /></td></tr>
+<tr class="separator:ac3abda06650ea9373bfbb79afd163b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0caa9585487c9df905063b4dfd648b7b" id="r_a0caa9585487c9df905063b4dfd648b7b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0caa9585487c9df905063b4dfd648b7b">Pause</a> ()</td></tr>
+<tr class="memdesc:a0caa9585487c9df905063b4dfd648b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">暂停播放，后续可以继续播放。  <br /></td></tr>
+<tr class="separator:a0caa9585487c9df905063b4dfd648b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a845db5bebcdc8a30b6a789bec9478dca" id="r_a845db5bebcdc8a30b6a789bec9478dca"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a845db5bebcdc8a30b6a789bec9478dca">Resume</a> ()</td></tr>
+<tr class="memdesc:a845db5bebcdc8a30b6a789bec9478dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">恢复播放（暂停后继续播放）。  <br /></td></tr>
+<tr class="separator:a845db5bebcdc8a30b6a789bec9478dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
+静态 Public 属性</h2></td></tr>
+<tr class="memitem:ae0e04e829089c08070cb170a67215052" id="r_ae0e04e829089c08070cb170a67215052"><td class="memItemLeft" align="right" valign="top">static constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0e04e829089c08070cb170a67215052">kDefaultI2cAddress</a> = 0x40</td></tr>
+<tr class="memdesc:ae0e04e829089c08070cb170a67215052"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认I2C地址。  <br /></td></tr>
+<tr class="separator:ae0e04e829089c08070cb170a67215052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>Tts20是用于TTS20模块的驱动类，用于语音合成。 </p>
+<dl class="section examples"><dt>示例</dt><dd><a class="el" href="play_8ino-example.html#_a0">play.ino</a>, <a class="el" href="play_builtin_sounds_8ino-example.html#_a0">play_builtin_sounds.ino</a>, <a class="el" href="play_flow_control_8ino-example.html#_a0">play_flow_control.ino</a> , 以及 <a class="el" href="play_with_parameters_8ino-example.html#_a0">play_with_parameters.ino</a>.</dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8h_source.html">tts20.h</a> 第 <a class="el" href="tts20_8h_source.html#l00027">27</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aea3ee289727d68dc8998b206f07b361d" name="aea3ee289727d68dc8998b206f07b361d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3ee289727d68dc8998b206f07b361d">&#9670;&#160;</a></span>Tts20()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">em::Tts20::Tts20 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t</td>          <td class="paramname"><span class="paramname"><em>i2c_address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TwoWire &amp;</td>          <td class="paramname"><span class="paramname"><em>wire</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>构造函数。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">i2c_address</td><td>I2C地址。 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">wire</td><td>TwoWire 对象引用。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a8a4d90cbfa1e883e9325de0577bd73b8" name="a8a4d90cbfa1e883e9325de0577bd73b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a4d90cbfa1e883e9325de0577bd73b8">&#9670;&#160;</a></span>device_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t em::Tts20::device_id </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取设备ID。 </p>
+<dl class="section return"><dt>返回</dt><dd>设备ID。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00087">87</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9b8cd98741afb198a602cf7b50915b30" name="a9b8cd98741afb198a602cf7b50915b30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b8cd98741afb198a602cf7b50915b30">&#9670;&#160;</a></span>firmware_version()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String em::Tts20::firmware_version </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取固件版本。 </p>
+<dl class="section return"><dt>返回</dt><dd>固件版本。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00069">69</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aefd2a1d14ee47a141349da07e869a9a8" name="aefd2a1d14ee47a141349da07e869a9a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefd2a1d14ee47a141349da07e869a9a8">&#9670;&#160;</a></span>Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void em::Tts20::Init </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化。 </p>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00048">48</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1fd60bb77007284d8b666c3f25ade2f2" name="a1fd60bb77007284d8b666c3f25ade2f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fd60bb77007284d8b666c3f25ade2f2">&#9670;&#160;</a></span>IsBusy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool em::Tts20::IsBusy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>检查模块是否处于忙碌状态。 </p>
+<dl class="section return"><dt>返回</dt><dd>true 表示模块处于忙碌状态，false 表示模块空闲。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00130">130</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aded8060e44e8128f73466bc8479300a7" name="aded8060e44e8128f73466bc8479300a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aded8060e44e8128f73466bc8479300a7">&#9670;&#160;</a></span>name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">String em::Tts20::name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取设备名称。 </p>
+<dl class="section return"><dt>返回</dt><dd>设备名称。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00099">99</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a0caa9585487c9df905063b4dfd648b7b" name="a0caa9585487c9df905063b4dfd648b7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0caa9585487c9df905063b4dfd648b7b">&#9670;&#160;</a></span>Pause()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool em::Tts20::Pause </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>暂停播放，后续可以继续播放。 </p>
+<dl class="section return"><dt>返回</dt><dd>是否成功暂停播放。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00160">160</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a67060bb832abb5b04e51832ed26ebab8" name="a67060bb832abb5b04e51832ed26ebab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67060bb832abb5b04e51832ed26ebab8">&#9670;&#160;</a></span>Play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool em::Tts20::Play </td>
+          <td>(</td>
+          <td class="paramtype">const String &amp;</td>          <td class="paramname"><span class="paramname"><em>text</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文本转语音并播放。 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">text</td><td>要播放的文本数据。 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>是否成功播放。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00117">117</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a845db5bebcdc8a30b6a789bec9478dca" name="a845db5bebcdc8a30b6a789bec9478dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a845db5bebcdc8a30b6a789bec9478dca">&#9670;&#160;</a></span>Resume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool em::Tts20::Resume </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>恢复播放（暂停后继续播放）。 </p>
+<dl class="section return"><dt>返回</dt><dd>是否成功恢复播放。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00169">169</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac3abda06650ea9373bfbb79afd163b33" name="ac3abda06650ea9373bfbb79afd163b33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3abda06650ea9373bfbb79afd163b33">&#9670;&#160;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool em::Tts20::Stop </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>终止播放。 </p>
+<dl class="section return"><dt>返回</dt><dd>是否成功终止播放。 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="tts20_8cpp_source.html">tts20.cpp</a> 第 <a class="el" href="tts20_8cpp_source.html#l00151">151</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ae0e04e829089c08070cb170a67215052" name="ae0e04e829089c08070cb170a67215052"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0e04e829089c08070cb170a67215052">&#9670;&#160;</a></span>kDefaultI2cAddress</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t em::Tts20::kDefaultI2cAddress = 0x40</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>默认I2C地址。 </p>
+
+<p class="definition">在文件 <a class="el" href="tts20_8h_source.html">tts20.h</a> 第 <a class="el" href="tts20_8h_source.html#l00037">37</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>src/<a class="el" href="tts20_8h_source.html">tts20.h</a></li>
+<li>src/<a class="el" href="tts20_8cpp_source.html">tts20.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>em</b></li><li class="navelem"><a class="el" href="classem_1_1_tts20.html">Tts20</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.0 </li>
+  </ul>
+</div>
+</body>
+</html>
