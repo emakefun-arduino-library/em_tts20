@@ -163,8 +163,8 @@ class Tts20 {
   Tts20 &operator=(const Tts20 &) = delete;
 
   void ClearRxBuffer();
-  void I2cWrite(const uint8_t *data, const uint16_t size);
-  uint8_t I2cRead(uint8_t *buffer, const uint8_t expected_length, const uint32_t timeout_ms);
+  void Write(const uint8_t *data, const size_t size);
+  uint8_t Read(uint8_t *buffer, const uint8_t expected_length, const uint32_t timeout_ms);
   bool ReadUntil(const uint8_t target_byte, const uint32_t timeout_ms);
 
   const uint8_t i2c_address_ = kDefaultI2cAddress;

@@ -43,6 +43,4 @@ void loop() {
   }
 
   while (g_tts20.IsBusy());
-
-  delay(2000);
 }

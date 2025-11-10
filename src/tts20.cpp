@@ -16,29 +16,28 @@ constexpr uint8_t kResponseSuccess = 0x41;
 constexpr uint8_t kResponseBusy = 0x4E;
 constexpr uint8_t kResponseIdle = 0x4F;
 
+// Memory address constants
+constexpr uint8_t kMemAddrDeviceId = 0x00;
+constexpr uint8_t kMemAddrMajorVersion = 0x01;
+constexpr uint8_t kMemAddrMinorVersion = 0x02;
+constexpr uint8_t kMemAddrPatchVersion = 0x03;
+constexpr uint8_t kMemAddrName = 0x04;
+constexpr uint8_t kMemAddrCommand = 0x10;
+constexpr uint8_t kMemAddrTxBufferFreeSpace = 0x11;
+constexpr uint8_t kMemAddrTxBufferIsEmpty = 0x12;
+constexpr uint8_t kMemAddrTxBuffer = 0x13;
+constexpr uint8_t kMemAddrRxBufferCapacity = 0x53;
+constexpr uint8_t kMemAddrRxBufferReadPtr = 0x54;
+constexpr uint8_t kMemAddrRxBufferWritePtr = 0x55;
+constexpr uint8_t kMemAddrRxBufferData = 0x56;
+constexpr uint8_t kMemAddrRxBufferOverflow = 0x96;
+
 // Wire library buffer capacity constant
 #if defined(ESP32)
 constexpr uint8_t kWireBufferCapacity = 128;
 #else
 constexpr uint8_t kWireBufferCapacity = 32;
 #endif
-
-enum MemoryAddress : uint8_t {
-  kDeviceId = 0x00,
-  kMajorVersion = 0x01,
-  kMinorVersion = 0x02,
-  kPatchVersion = 0x03,
-  kName = 0x04,
-  kCommand = 0x10,
-  kTxBufferFreeSpace = 0x11,
-  kTxBufferIsEmpty = 0x12,
-  kTxBuffer = 0x13,
-  kRxBufferCapacity = 0x53,
-  kRxBufferReadPtr = 0x54,
-  kRxBufferWritePtr = 0x55,
-  kRxBufferData = 0x56,
-  kRxBufferOverflow = 0x96,
-};
 
 }  // namespace
 
@@ -47,7 +46,7 @@ Tts20::Tts20(const uint8_t i2c_address, TwoWire &wire) : i2c_address_(i2c_addres
 
 void Tts20::Init() {
   wire_.beginTransmission(i2c_address_);
-  wire_.write(kRxBufferCapacity);
+  wire_.write(kMemAddrRxBufferCapacity);
   EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
   EM_CHECK_EQ(wire_.requestFrom(i2c_address_, static_cast<uint8_t>(1)), 1);
@@ -56,10 +55,10 @@ void Tts20::Init() {
 
   rx_buffer_capacity_ = wire_.read();
 
-  const uint8_t init_command[] = {0xFD, 0x00, 0x12, 0x01, 0x04, 0x5B, 0x76, 0x35, 0x5D, 0x5B, 0x73,
-                                  0x35, 0x5D, 0x5B, 0x74, 0x35, 0x5D, 0x5B, 0x6D, 0x30, 0x5D};
+  constexpr uint8_t kInitCommand[] = {0xFD, 0x00, 0x12, 0x01, 0x04, 0x5B, 0x76, 0x35, 0x5D, 0x5B, 0x73,
+                                      0x35, 0x5D, 0x5B, 0x74, 0x35, 0x5D, 0x5B, 0x6D, 0x30, 0x5D};
 
-  I2cWrite(init_command, sizeof(init_command));
+  Write(kInitCommand, sizeof(kInitCommand));
 
   EM_CHECK(ReadUntil(kResponseSuccess, kDefaultTimeoutMs));
 
@@ -68,7 +67,7 @@ void Tts20::Init() {
 
 String Tts20::firmware_version() {
   wire_.beginTransmission(i2c_address_);
-  wire_.write(kMajorVersion);
+  wire_.write(kMemAddrMajorVersion);
   EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
   uint8_t version[3] = {0};
@@ -86,7 +85,7 @@ String Tts20::firmware_version() {
 
 uint8_t Tts20::device_id() {
   wire_.beginTransmission(i2c_address_);
-  wire_.write(kDeviceId);
+  wire_.write(kMemAddrDeviceId);
   EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
   EM_CHECK_EQ(wire_.requestFrom(i2c_address_, static_cast<uint8_t>(1)), 1);
@@ -98,7 +97,7 @@ uint8_t Tts20::device_id() {
 
 String Tts20::name() {
   wire_.beginTransmission(i2c_address_);
-  wire_.write(kName);
+  wire_.write(kMemAddrName);
   EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
   constexpr uint8_t kLength = 8;
@@ -121,8 +120,8 @@ bool Tts20::Play(const String &text) {
 
   ClearRxBuffer();
 
-  I2cWrite(header, sizeof(header));
-  I2cWrite(reinterpret_cast<const uint8_t *>(text.c_str()), text.length());
+  Write(header, sizeof(header));
+  Write(reinterpret_cast<const uint8_t *>(text.c_str()), text.length());
 
   return ReadUntil(kResponseSuccess, kDefaultTimeoutMs);
 }
@@ -132,11 +131,11 @@ bool Tts20::IsBusy() {
   while (millis() - start_time < 5000) {
     ClearRxBuffer();
 
-    const uint8_t command[] = {0xFD, 0x00, 0x01, 0x21};
-    I2cWrite(command, sizeof(command));
+    constexpr uint8_t kIsBusyCommand[] = {0xFD, 0x00, 0x01, 0x21};
+    Write(kIsBusyCommand, sizeof(kIsBusyCommand));
 
     uint8_t data = 0;
-    if (I2cRead(&data, sizeof(data), 500) == sizeof(data)) {
+    if (Read(&data, sizeof(data), 500) == sizeof(data)) {
       if (data == kResponseBusy) {
         return true;
       } else if (data == kResponseIdle) {
@@ -151,8 +150,8 @@ bool Tts20::IsBusy() {
 bool Tts20::Stop() {
   ClearRxBuffer();
 
-  const uint8_t command[] = {0xFD, 0x00, 0x01, 0x02};
-  I2cWrite(command, sizeof(command));
+  constexpr uint8_t kStopCommand[] = {0xFD, 0x00, 0x01, 0x02};
+  Write(kStopCommand, sizeof(kStopCommand));
 
   return ReadUntil(kResponseSuccess, kDefaultTimeoutMs);
 }
@@ -160,8 +159,8 @@ bool Tts20::Stop() {
 bool Tts20::Pause() {
   ClearRxBuffer();
 
-  const uint8_t command[] = {0xFD, 0x00, 0x01, 0x03};
-  I2cWrite(command, sizeof(command));
+  constexpr uint8_t kPauseCommand[] = {0xFD, 0x00, 0x01, 0x03};
+  Write(kPauseCommand, sizeof(kPauseCommand));
 
   return ReadUntil(kResponseSuccess, kDefaultTimeoutMs);
 }
@@ -169,27 +168,27 @@ bool Tts20::Pause() {
 bool Tts20::Resume() {
   ClearRxBuffer();
 
-  const uint8_t command[] = {0xFD, 0x00, 0x01, 0x04};
-  I2cWrite(command, sizeof(command));
+  constexpr uint8_t kResumeCommand[] = {0xFD, 0x00, 0x01, 0x04};
+  Write(kResumeCommand, sizeof(kResumeCommand));
 
   return ReadUntil(kResponseSuccess, kDefaultTimeoutMs);
 }
 
 void Tts20::ClearRxBuffer() {
   wire_.beginTransmission(i2c_address_);
-  wire_.write(kCommand);
+  wire_.write(kMemAddrCommand);
   wire_.write(kCommandClearRxBuffer);
   EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 }
 
-void Tts20::I2cWrite(const uint8_t *data, const uint16_t size) {
+void Tts20::Write(const uint8_t *data, const size_t size) {
   EM_CHECK(data != nullptr && size > 0);
 
-  uint16_t offset = 0;
+  size_t offset = 0;
 
   while (offset < size) {
     wire_.beginTransmission(i2c_address_);
-    wire_.write(kTxBufferFreeSpace);
+    wire_.write(kMemAddrTxBufferFreeSpace);
     EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
     uint8_t segment_length = 0;
@@ -203,18 +202,11 @@ void Tts20::I2cWrite(const uint8_t *data, const uint16_t size) {
       continue;
     }
 
-    segment_length = min(segment_length, static_cast<uint8_t>(kWireBufferCapacity - 1));
-
-    if (size - offset < segment_length) {
-      segment_length = size - offset;
-    }
+    segment_length = min(size - offset, static_cast<size_t>(min(segment_length, static_cast<uint8_t>(kWireBufferCapacity - 1))));
 
     wire_.beginTransmission(i2c_address_);
-    wire_.write(kTxBuffer);
-    for (uint8_t i = 0; i < segment_length; i++) {
-      wire_.write(data[offset + i]);
-    }
-
+    wire_.write(kMemAddrTxBuffer);
+    wire_.write(data + offset, segment_length);
     EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
     offset += segment_length;
@@ -222,7 +214,7 @@ void Tts20::I2cWrite(const uint8_t *data, const uint16_t size) {
 
   while (true) {
     wire_.beginTransmission(i2c_address_);
-    wire_.write(kTxBufferIsEmpty);
+    wire_.write(kMemAddrTxBufferIsEmpty);
     EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
     EM_CHECK_EQ(wire_.requestFrom(i2c_address_, static_cast<uint8_t>(1)), 1);
@@ -235,7 +227,7 @@ void Tts20::I2cWrite(const uint8_t *data, const uint16_t size) {
   }
 }
 
-uint8_t Tts20::I2cRead(uint8_t *buffer, const uint8_t expected_length, const uint32_t timeout_ms) {
+uint8_t Tts20::Read(uint8_t *buffer, const uint8_t expected_length, const uint32_t timeout_ms) {
   EM_CHECK(buffer != nullptr && expected_length > 0);
 
   uint8_t actual_length = 0;
@@ -243,7 +235,7 @@ uint8_t Tts20::I2cRead(uint8_t *buffer, const uint8_t expected_length, const uin
 
   while (actual_length < expected_length && (millis() - start_time) < timeout_ms) {
     wire_.beginTransmission(i2c_address_);
-    wire_.write(kRxBufferReadPtr);
+    wire_.write(kMemAddrRxBufferReadPtr);
     EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
     uint8_t data[2] = {0};
@@ -264,7 +256,7 @@ uint8_t Tts20::I2cRead(uint8_t *buffer, const uint8_t expected_length, const uin
         min(expected_length - actual_length, min((data[1] + rx_buffer_capacity_ - data[0]) % rx_buffer_capacity_, rx_buffer_capacity_ - data[0]));
 
     wire_.beginTransmission(i2c_address_);
-    wire_.write(static_cast<uint8_t>(kRxBufferData + data[0]));
+    wire_.write(static_cast<uint8_t>(kMemAddrRxBufferData + data[0]));
     EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
 
     EM_CHECK_EQ(wire_.requestFrom(i2c_address_, segment_length), segment_length);
@@ -277,7 +269,7 @@ uint8_t Tts20::I2cRead(uint8_t *buffer, const uint8_t expected_length, const uin
     }
 
     wire_.beginTransmission(i2c_address_);
-    wire_.write(kRxBufferReadPtr);
+    wire_.write(kMemAddrRxBufferReadPtr);
     wire_.write(static_cast<uint8_t>((data[0] + segment_length) % rx_buffer_capacity_));
     EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
   }
@@ -286,7 +278,7 @@ uint8_t Tts20::I2cRead(uint8_t *buffer, const uint8_t expected_length, const uin
 
 bool Tts20::ReadUntil(const uint8_t target_byte, const uint32_t timeout_ms) {
   uint8_t data = 0;
-  if (I2cRead(&data, sizeof(data), timeout_ms) == sizeof(data) && data == target_byte) {
+  if (Read(&data, sizeof(data), timeout_ms) == sizeof(data) && data == target_byte) {
     return true;
   }
   return false;
