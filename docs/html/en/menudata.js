@@ -38,4 +38,4 @@ var menudata={children:[
 {text:"Macros",url:"globals_defs.html"}]}]},
 {text:"Examples",url:"examples.html"},
 {text:"Downloads",url:"usergroup0.html",children:[
-{text:"EM_TTS20_v1.0.0.zip: https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.0.zip",url:"^https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.0.zip"}]}]}
+{text:"EM_TTS20_v1.0.1.zip: https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.1.zip",url:"^https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.1.zip"}]}]}

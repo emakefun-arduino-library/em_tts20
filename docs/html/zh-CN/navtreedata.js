@@ -43,7 +43,7 @@ var NAVTREE =
     ] ],
     [ "示例", "examples.html", "examples" ],
     [ "下载", "usergroup0.html", [
-      [ "EM_TTS20_v1.0.0.zip: https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.0.zip", "^https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.0.zip", null ]
+      [ "EM_TTS20_v1.0.1.zip: https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.1.zip", "^https://gh-proxy.com/https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.1.zip", null ]
     ] ]
   ] ]
 ];

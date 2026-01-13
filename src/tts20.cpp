@@ -45,24 +45,31 @@ Tts20::Tts20(const uint8_t i2c_address, TwoWire &wire) : i2c_address_(i2c_addres
 }
 
 void Tts20::Init() {
-  wire_.beginTransmission(i2c_address_);
-  wire_.write(kMemAddrRxBufferCapacity);
-  EM_CHECK_EQ(wire_.endTransmission(), kI2cEndTransmissionSuccess);
+  for (uint8_t i = 0; i < 5; i++) {
+    wire_.beginTransmission(i2c_address_);
+    wire_.write(kMemAddrRxBufferCapacity);
+    if (wire_.endTransmission() != kI2cEndTransmissionSuccess) {
+      continue;
+    }
+    if (wire_.requestFrom(i2c_address_, static_cast<uint8_t>(1)) != 1) {
+      continue;
+    }
 
-  EM_CHECK_EQ(wire_.requestFrom(i2c_address_, static_cast<uint8_t>(1)), 1);
+    while (wire_.available() == 0);
 
-  while (wire_.available() == 0);
+    rx_buffer_capacity_ = wire_.read();
 
-  rx_buffer_capacity_ = wire_.read();
+    constexpr uint8_t kInitCommand[] = {0xFD, 0x00, 0x12, 0x01, 0x04, 0x5B, 0x76, 0x35, 0x5D, 0x5B, 0x73,
+                                        0x35, 0x5D, 0x5B, 0x74, 0x35, 0x5D, 0x5B, 0x6D, 0x30, 0x5D};
 
-  constexpr uint8_t kInitCommand[] = {0xFD, 0x00, 0x12, 0x01, 0x04, 0x5B, 0x76, 0x35, 0x5D, 0x5B, 0x73,
-                                      0x35, 0x5D, 0x5B, 0x74, 0x35, 0x5D, 0x5B, 0x6D, 0x30, 0x5D};
+    Write(kInitCommand, sizeof(kInitCommand));
 
-  Write(kInitCommand, sizeof(kInitCommand));
-
-  EM_CHECK(ReadUntil(kResponseSuccess, kDefaultTimeoutMs));
-
-  while (IsBusy());
+    if (ReadUntil(kResponseSuccess, kDefaultTimeoutMs)) {
+      while (IsBusy());
+      return;
+    }
+  }
+  EM_CHECK(false && "TTS20 initialization failed");
 }
 
 String Tts20::firmware_version() {
