@@ -43,7 +43,7 @@ var NAVTREE =
     ] ],
     [ "Examples", "examples.html", "examples" ],
     [ "Downloads", "usergroup0.html", [
-      [ "EM_TTS20_v1.0.0.zip: https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.0.zip", "^https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.0.zip", null ]
+      [ "EM_TTS20_v1.0.1.zip: https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.1.zip", "^https://github.com/emakefun-arduino-library/em_tts20/archive/refs/tags/v1.0.1.zip", null ]
     ] ]
   ] ]
 ];
